@@ -1,5 +1,5 @@
-CRC cards:
-==========
+**CRC cards:**
+==============
 (A) Class Customer:
 	(1) Responsibilities:
 		- Sign up for a table
@@ -11,6 +11,7 @@ CRC cards:
 
 (B) Class ReservationManager:
 	(1) Responsibilities:
+		- Send sign-up confirmation
 		- Add customer to the waitlist in the waitlist
 		- Remove customer from the waitlist
 		- Notify the customer if a table is available
@@ -47,3 +48,12 @@ CRC cards:
 		- Maintain the maximum seats available at the table
 	(2) Collaborators:
 		- None
+
+**Design pattern chosen:** 
+==========================
+I chose **"Singleton design pattern"** in the implementation of waitlist scenario
+
+**Explanation:**
+================
+The main intent to choose "Singleton design pattern" is to ensure that there are **only one instance** of the ReservationManager, WaitlistHelper and TableManager classes. Each of these three classes maintain a unique lists of objects: the **WaitlistHelper** class maintains list of customers whereas the **TableManager** maintains a unique list of all the tables (occupied as well as un-occupied) tables in the restaurant. The **ReservationManager** is the main driver class which communicates with **Customer**, **WaitlistHelper** and **TableManager** classes. A customer should interact with only one "ReservationManager". In simple words, there should be one and only one "ReservationManager" who is responsible to track customers and allocate tables to them. The use of **singleton** pattern will ensure this while making future modifications by preventing creation of multiple instances of these objects and avoiding accidental changes to the code.
+
