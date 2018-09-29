@@ -3,14 +3,15 @@
 (A) Class Customer:
 	(1) Responsibilities:
 		- Sign up for a table
-		- Receive notifications about available table
-		- Confirm the reservation
-		- Cancel the reservation
+		- Receive notifications about availablility of table
+		- Confirm the waitlist
+		- leave the waitlist
 	(2) Collaborators:
 		- ReservationManager
 
 (B) Class ReservationManager:
 	(1) Responsibilities:
+		- Accept Customer details - name, cell phone and number of people in the party
 		- Send sign-up confirmation
 		- Add customer to the waitlist in the waitlist
 		- Remove customer from the waitlist
@@ -49,11 +50,24 @@
 	(2) Collaborators:
 		- None
 
-**Design pattern chosen:** 
-==========================
-I chose **"Singleton design pattern"** in the implementation of waitlist scenario
-
+**Design patterns:** 
+====================
+Following design patterns are applicable to waitlist scenario:
+**(1) Singleton Design Pattern:**
 **Explanation:**
-================
 The main intent to choose "Singleton design pattern" is to ensure that there are **only one instance** of the ReservationManager, WaitlistHelper and TableManager classes. Each of these three classes maintain a unique lists of objects: the **WaitlistHelper** class maintains list of customers whereas the **TableManager** maintains a unique list of all the tables (occupied as well as un-occupied) tables in the restaurant. The **ReservationManager** is the main driver class which communicates with **Customer**, **WaitlistHelper** and **TableManager** classes. A customer should interact with only one "ReservationManager". In simple words, there should be one and only one "ReservationManager" who is responsible to track customers and allocate tables to them. The use of **singleton** pattern will ensure this while making future modifications by preventing creation of multiple instances of these objects and avoiding accidental changes to the code.
+
+**Objects that play role in singleton pattern:**
+- Class ReservationManager
+- Class WaitlistHelper
+- Class TableManager
+
+**(2) Observer Design Pattern:**
+**Explanation:**
+The customer signs up (or subscribes to) with the ReservationManager who is responsible to add the customer to the waitlist. Now, whenever, a table is available, the ReservationManager picks up the next customer available (if number of people can be accomodate at the table) and sends him/her an SMS (or **publishes**) about it so that customer can either decide to accept or leave. In simple words, the customer **subscribes** to the ReservationManager for the information regarding the availibility of vacant tables and the ReservationManager notifies the appropriate customer in its waitlist whenever a table is free. Such publisher-subscriber relationship is achieved through the **Observer Design Pattern**.
+
+**Objects that play role in observer pattern:**
+- Class Customer
+- Class ReservationManager
+
 
