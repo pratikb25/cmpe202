@@ -1,0 +1,30 @@
+pratikb@hackbook:~/code/cmpe202/lab6$ java Cashier 
+Printing Payment Slip ##########################
+08/25/2018	06:24:55 PM
+	FIVE GUYS	
+Order Number: 123
+LBB			5.59
+{{{{ Baccon}}}}
+G Onion
+Jala Grilled
+->| Lettuce
+->| Tomato
+LTL CAJ			2.79
+
+Sub. Total:		:8.379999999999999
+
+
+Printing Packaging Slip ##########################
+Order Number: 123
+08/25/2018	06:24:55 PM
+	FIVE GUYS	
+LBB			
+G Onion
+Jala Grilled
+->| Lettuce
+->| Tomato
+{{{{ Baccon}}}}
+
+
+LTL CAJ			
+
