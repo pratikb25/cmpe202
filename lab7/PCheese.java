@@ -1,19 +1,19 @@
-public class Sauce extends LeafDecorator
+public class PCheese extends LeafDecorator
 {
     private String[] options ;
     
     
-    public Sauce( String d )
+    public PCheese( String d )
     {
         super(d) ;
     }
     
-    // 1 sauce free, extra +.50
+    // per premium cheese +1.50
     public void setOptions( String[] options )
     {
         this.options = options ;
-        if ( options.length > 1 )
-            this.price += (options.length-1) * 0.50 ;
+        if ( options.length > 0 )
+            this.price += options.length * 1.50 ;
     }
     
     public String getDescription() 

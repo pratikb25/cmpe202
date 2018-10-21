@@ -1,19 +1,17 @@
-public class Sauce extends LeafDecorator
+public class Bun extends LeafDecorator
 {
     private String[] options ;
     
     
-    public Sauce( String d )
+    public Bun( String d )
     {
         super(d) ;
     }
     
-    // 1 sauce free, extra +.50
+    // No extra cost for bun type
     public void setOptions( String[] options )
     {
         this.options = options ;
-        if ( options.length > 1 )
-            this.price += (options.length-1) * 0.50 ;
     }
     
     public String getDescription() 
