@@ -11,6 +11,25 @@ public class CreditCardExpDecorator extends CreditCardExp {
     	if(ccExp != null)
     		ccExp.setNext(next);
     }	
+    
+    private String formatCardExp(String S) {
+		int block = 2;
+		boolean addedSlash = false;
+		if(S.length() <= 2)
+			return S;
+		
+		StringBuffer r = new StringBuffer("");
+		for(int i = 0; i < S.length(); i++) {
+			String ch = Character.toString(S.charAt(i));
+			r.append(ch);
+			if(addedSlash == false && i > 0 && ((i+1) % block) == 0) {
+				r.append("/");
+				addedSlash = true;
+			}
+		}
+
+		return r.toString().trim();
+	}
 
 	public String display() {
 		if(ccExp == null)
@@ -18,7 +37,8 @@ public class CreditCardExpDecorator extends CreditCardExp {
 		String input = ccExp.display().trim();
 		input = input.substring(input.indexOf("[") + 1);
 		input = input.substring(0, input.indexOf("]"));
-		//TODO Insert a "/" in the exp date
+		if(input.length() > 2)
+			input = formatCardExp(input);
 		return "[" + input + "]";
 	}	
 

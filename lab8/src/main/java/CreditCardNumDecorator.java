@@ -42,7 +42,6 @@ public class CreditCardNumDecorator extends CreditCardNum {
 		String txtbox = ccNum.display().trim();
 		String input = txtbox.substring(txtbox.indexOf("[") + 1);
 		input = input.substring(0, input.indexOf("]"));
-		// TODO Add login to introduce spaces in the "txtbox"
 		input = formatCardNumber(input);
 		return "[" + input + "]";
 	}
